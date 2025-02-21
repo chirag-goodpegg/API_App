@@ -6,11 +6,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.newsnow.screens.DetailScreen
 import com.example.newsnow.screens.HomePage
+import com.example.newsnow.screens.SpashScreen
 
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "Home_Page") {
+    NavHost(navController = navController, startDestination = "splash") {
+        composable("splash") {
+            SpashScreen(navController)
+        }
         composable("Home_Page") {
             HomePage(navController)
         }
