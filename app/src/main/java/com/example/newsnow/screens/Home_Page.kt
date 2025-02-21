@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -46,6 +47,16 @@ import com.skydoves.landscapist.glide.GlideImage
 @Composable
 fun HomePage(navController: NavController, viewModel: EmployeeViewModel = viewModel()) {
     val employees by viewModel.users.collectAsState()
+    Text("Employees",
+        style = TextStyle(
+            fontSize = 30.sp
+        ),
+        color = Color.White,
+        modifier = Modifier
+            .padding(top = 5.dp,)
+            .fillMaxWidth(),
+        textAlign = TextAlign.Center
+    )
     LazyColumn(
         modifier = Modifier.padding(start = 5.dp, end = 5.dp, bottom = 5.dp, top = 7.dp)
     ) {
@@ -64,7 +75,7 @@ fun EmployeeCard(employee: EmployeeDataModel,navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable { navController.navigate("Details_Screen/${employee.login}") }
-            .padding(5.dp)
+            .padding(top = 45.dp, start = 10.dp, end = 10.dp, )
             .border(
                 4.dp,
                 Color.White.copy(alpha = 0.5f),

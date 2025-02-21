@@ -37,13 +37,6 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(colorPrimary)
                     ) {
-                        Text("Employees",
-                            modifier = Modifier
-                                .align(Alignment.CenterHorizontally)
-                                .padding(top = 5.dp),
-                            color = Color.White,
-                            fontSize = 30.sp,
-                            )
 //                        HomePage(employeeViewModel)
                         AppNavigation()
                     }
