@@ -1,6 +1,5 @@
 package com.example.newsnow.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -19,7 +18,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -30,8 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -39,7 +35,6 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.newsnow.EmployeeDataModel
-import com.example.newsnow.R
 import com.example.newsnow.ui.theme.colorSecondary
 import com.example.newsnow.viewModel.EmployeeViewModel
 import com.skydoves.landscapist.glide.GlideImage
@@ -47,13 +42,14 @@ import com.skydoves.landscapist.glide.GlideImage
 @Composable
 fun HomePage(navController: NavController, viewModel: EmployeeViewModel = viewModel()) {
     val employees by viewModel.users.collectAsState()
-    Text("Employees",
+    Text(
+        "Employees",
         style = TextStyle(
             fontSize = 30.sp
         ),
         color = Color.White,
         modifier = Modifier
-            .padding(top = 5.dp,)
+            .padding(top = 5.dp)
             .fillMaxWidth(),
         textAlign = TextAlign.Center
     )
@@ -61,25 +57,23 @@ fun HomePage(navController: NavController, viewModel: EmployeeViewModel = viewMo
         modifier = Modifier.padding(start = 5.dp, end = 5.dp, bottom = 5.dp, top = 7.dp)
     ) {
         items(employees) { employee ->
-            EmployeeCard(employee,navController)
+            EmployeeCard(employee, navController)
             Spacer(modifier = Modifier.height(10.dp))
         }
     }
 }
 
 @Composable
-fun EmployeeCard(employee: EmployeeDataModel,navController: NavController) {
+fun EmployeeCard(employee: EmployeeDataModel, navController: NavController) {
     val coroutineScope = rememberCoroutineScope()
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 20.dp),
         modifier = Modifier
             .fillMaxWidth()
             .clickable { navController.navigate("Details_Screen/${employee.login}") }
-            .padding(top = 45.dp, start = 10.dp, end = 10.dp, )
+            .padding(top = 45.dp, start = 10.dp, end = 10.dp)
             .border(
-                4.dp,
-                Color.White.copy(alpha = 0.5f),
-                RoundedCornerShape(12.dp)
+                4.dp, Color.White.copy(alpha = 0.5f), RoundedCornerShape(12.dp)
             ),
         colors = CardDefaults.cardColors(
             containerColor = colorSecondary,  // Change the background color
@@ -92,9 +86,7 @@ fun EmployeeCard(employee: EmployeeDataModel,navController: NavController) {
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(
-                            Color(0xFF7432f7),
-                            Color(0xFFaf7ab0),
-                            Color(0xFFbe8d6d)
+                            Color(0xFF7432f7), Color(0xFFaf7ab0), Color(0xFFbe8d6d)
                         )  // Light to dark blue
                     )
                 )
@@ -107,14 +99,6 @@ fun EmployeeCard(employee: EmployeeDataModel,navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-//                Image(
-//                    painter = painterResource(id = R.drawable.avatar_img),
-//                    contentDescription = "Avatar",
-//                    modifier = Modifier
-//                        .size(50.dp)
-//                        .padding(4.dp),
-//                    contentScale = ContentScale.FillBounds
-//                )
 
                 GlideImage(
                     imageModel = { employee.avatar }, // Image URL
@@ -122,7 +106,7 @@ fun EmployeeCard(employee: EmployeeDataModel,navController: NavController) {
                         .size(150.dp)
                         .padding(8.dp)
                         .clip(RoundedCornerShape(12.dp)),
-                    )
+                )
                 Card(
                     elevation = CardDefaults.cardElevation(defaultElevation = 20.dp),
                     colors = CardDefaults.cardColors(
@@ -139,9 +123,7 @@ fun EmployeeCard(employee: EmployeeDataModel,navController: NavController) {
                             .background(
                                 brush = Brush.linearGradient(
                                     colors = listOf(
-                                        Color(0xFF7432f7),
-                                        Color(0xFFaf7ab0),
-                                        Color(0xFFbe8d6d)
+                                        Color(0xFF7432f7), Color(0xFFaf7ab0), Color(0xFFbe8d6d)
                                     )  // Light to dark blue
                                 )
                             )
@@ -149,10 +131,7 @@ fun EmployeeCard(employee: EmployeeDataModel,navController: NavController) {
                     ) {
                         Column(
                             modifier = Modifier.padding(
-                                start = 10.dp,
-                                top = 5.dp,
-                                end = 10.dp,
-                                bottom = 5.dp
+                                start = 10.dp, top = 5.dp, end = 10.dp, bottom = 5.dp
                             )
                         ) {
                             Text("Name:")
